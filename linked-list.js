@@ -152,7 +152,11 @@ class LinkedList {
      * @param {number} index The index to insert the value at
      */
     insertAt(value, index) {
-        if (index !== this.#size) this.#indexHandler(index);
+        if (index === this.#size) {
+            this.append(value);
+            return this;
+        }
+        this.#indexHandler(index);
         this.#size++;
         const newNode = new _Node(value);
         let oldNode = this.#nodeAt(index);

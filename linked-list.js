@@ -62,7 +62,7 @@ class LinkedList {
     }
 
     pop() {
-        if (this.#size === 0) return null;
+        if (this.#isEmpty()) return null;
         this.#size--;
         const node = this.#tail;
         const newTail = this.#tail.prevNode;
@@ -72,7 +72,7 @@ class LinkedList {
     }
 
     shift() {
-        if (this.#size === 0) return null;
+        if (this.#isEmpty()) return null;
         this.#size--;
         const node = this.#head;
         const newHead = this.#head.nextNode;
@@ -82,7 +82,7 @@ class LinkedList {
     }
 
     contains(value) {
-        if (this.#size === 0) return false;
+        if (this.#isEmpty()) return false;
         let current = this.#head;
         while (current.nextNode !== null) {
             if (current.value === value) return true;
@@ -92,7 +92,7 @@ class LinkedList {
     }
 
     find(value) {
-        if (this.#size === 0) return null;
+        if (this.#isEmpty()) return null;
         let current = this.#head;
         let index = 0;
         while (current.nextNode !== null) {
@@ -104,7 +104,7 @@ class LinkedList {
     }
 
     toString() {
-        if (this.#size === 0) return "null";
+        if (this.#isEmpty()) return "null";
         let string = "";
         let current = this.#head;
         while (current !== null) {
@@ -130,6 +130,10 @@ class LinkedList {
         this.#size--;
         let node = this.#nodeAt(index);
         node.prevNode.nextNode = node.nextNode;
+    }
+
+    #isEmpty() {
+        return this.#size === 0;
     }
 
     #nodeAt(index) {

@@ -18,3 +18,4 @@ The implementation is an ES6 class {LinkedList} which supports the following met
 -   `.toString()` - Returns a string with the values of every item in the list.
 -   `.insertAt(value, index)` - Inserts the specified \<value\> into the list at the provided \<index\>.
 -   `.removeAt(index)` - Removes the item at the specified \<index\>
+-   `.replaceAt(value, index)` - Replaces the item at \<index\> with the provided \<value\>.

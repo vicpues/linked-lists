@@ -128,8 +128,14 @@ class LinkedList {
     removeAt(index) {
         this.#indexHandler(index);
         this.#size--;
-        let node = this.#nodeAt(index);
+        const node = this.#nodeAt(index);
         node.prevNode.nextNode = node.nextNode;
+    }
+
+    replaceAt(value, index) {
+        this.#indexHandler(index);
+        const node = this.#nodeAt(index);
+        node.value = value;
     }
 
     #isEmpty() {

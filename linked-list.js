@@ -61,23 +61,6 @@ class LinkedList {
         return this.#nodeAt(index).value;
     }
 
-    #nodeAt(index) {
-        this.#indexHandler(index);
-        let current = this.#head;
-        for (let i = 0; i < index; i++) {
-            current = current.nextNode;
-        }
-        return current;
-    }
-
-    #indexHandler(index, includeTail = true) {
-        if (typeof index !== "number" || index !== Math.floor(index))
-            throw new TypeError(`Index must be a whole number`);
-        if (index < 0) throw new RangeError(`Index must be 0 or higher!`);
-        if (index >= this.#size || (includeTail && index > this.#size))
-            throw new RangeError(`Index "${index}" does not exist!`);
-    }
-
     pop() {
         if (this.#size === 0) return null;
         this.#size--;
@@ -147,6 +130,23 @@ class LinkedList {
         this.#size--;
         let node = this.#nodeAt(index);
         node.prevNode.nextNode = node.nextNode;
+    }
+
+    #nodeAt(index) {
+        this.#indexHandler(index);
+        let current = this.#head;
+        for (let i = 0; i < index; i++) {
+            current = current.nextNode;
+        }
+        return current;
+    }
+
+    #indexHandler(index, includeTail = true) {
+        if (typeof index !== "number" || index !== Math.floor(index))
+            throw new TypeError(`Index must be a whole number`);
+        if (index < 0) throw new RangeError(`Index must be 0 or higher!`);
+        if (index >= this.#size || (includeTail && index > this.#size))
+            throw new RangeError(`Index "${index}" does not exist!`);
     }
 }
 

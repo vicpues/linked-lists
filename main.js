@@ -48,3 +48,30 @@ console.log(pokemon.toString()); // ( vulbasaur ) -> ( squirtle ) -> ( charizard
 
 pokemon.append("treecko").append("mudkip").append("torchic");
 console.log(pokemon.toString()); // ( vulbasaur ) -> ( squirtle ) -> ( charizard!! ) -> ( treecko ) -> ( mudkip ) -> ( torchic ) -> null
+
+const emptyList = new LinkedList();
+
+try {
+    emptyList.at(2);
+} catch (e) {
+    console.log(e.message); // Index "2" does not exist!
+}
+
+try {
+    emptyList.at("elephant");
+} catch (e) {
+    console.log(e.message); // Index must be a whole number
+}
+
+try {
+    emptyList.at(-2);
+} catch (e) {
+    console.log(e.message); // Index must be 0 or higher!
+}
+
+try {
+    emptyList.insertAt("hamster", 0);
+    console.log(emptyList.toString()); // ( hamster ) -> null
+} catch (e) {
+    console.log(e.message);
+}

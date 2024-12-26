@@ -1,4 +1,4 @@
-const LinkedList = require('./linked-list')
+const LinkedList = require("./linked-list");
 
 const list = new LinkedList();
 
@@ -8,4 +8,8 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
-console.log(list.toString())
+console.log(list.toString());
+list.insertAt("crocodile", 1);
+console.log(list.toString());
+list.removeAt(1);
+console.log(list.toString());

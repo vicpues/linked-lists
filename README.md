@@ -5,8 +5,8 @@ A basic implementation of a doubly linked list for The Odin Project's [fullstack
 The implementation is an ES6 class {LinkedList} which supports the following methods:
 
 -   `.size` - Read-only property that contains the size of the list.
--   `.head` - Read-only property that returns the first item of the list.
--   `.tail` - Read-only property that returns the last item of the list.
+-   `.head` - Read-only property that returns the first item of the list, or `null` if the list is empty.
+-   `.tail` - Read-only property that returns the last item of the list, or `null` if the list is empty.
 -   `LinkedList.from(array)` - Static method that takes in an array and returns its equivalent linked list.
 -   `.append(value)` - Adds a \<value\> at the end of the list.
 -   `.prepend(value)` - Adds a \<value\> at the beginning of the list.

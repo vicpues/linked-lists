@@ -16,11 +16,11 @@ class LinkedList {
     }
 
     get head() {
-        return this.#head.value;
+        return this.#head === null ? null : this.#head.value;
     }
 
     get tail() {
-        return this.#tail.value;
+        return this.#tail === null ? null : this.#tail.value;
     }
 
     static from(array) {

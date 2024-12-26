@@ -11,18 +11,25 @@ class LinkedList {
     #tail = null;
     #size = 0;
 
+    /** Returns the number of items in the list */
     get size() {
         return this.#size;
     }
 
+    /** The value of the first item, or `null` if the list is empty */
     get head() {
         return this.#head === null ? null : this.#head.value;
     }
 
+    /** The value of the last item, or `null` if the list is empty */
     get tail() {
         return this.#tail === null ? null : this.#tail.value;
     }
 
+    /**
+     * Creates a linked list from an array
+     * @param {Array} array Array from which to create the list
+     */
     static from(array) {
         const list = new LinkedList();
         for (let value of array) {
@@ -31,6 +38,10 @@ class LinkedList {
         return list;
     }
 
+    /**
+     * Adds a value at the end of the list
+     * @param {any} value Value to append to the end of the list
+     */
     append(value) {
         const newNode = new _Node(value);
         this.#size++;
@@ -44,6 +55,10 @@ class LinkedList {
         }
     }
 
+    /**
+     * Adds a value at the beginning of the list
+     * @param {any} value Value to be added at the beginning of the list
+     */
     prepend(value) {
         const newNode = new _Node(value);
         this.#size++;
@@ -57,10 +72,15 @@ class LinkedList {
         }
     }
 
+    /**
+     * Returns the value at the specified index
+     * @param {number} index The index of the desired value
+     */
     at(index) {
         return this.#nodeAt(index).value;
     }
 
+    /** Deletes the last item of the list and returns its value*/
     pop() {
         if (this.#isEmpty()) return null;
         this.#size--;
@@ -71,6 +91,7 @@ class LinkedList {
         return node.value;
     }
 
+    /** Deletes the first item of the list and returns its value */
     shift() {
         if (this.#isEmpty()) return null;
         this.#size--;
@@ -81,6 +102,10 @@ class LinkedList {
         return node.value;
     }
 
+    /**
+     * Returns `true` if the list contains the specified value, or `false` if it doesn't
+     * @param {any} value The value whose index we'd like to know
+     */
     contains(value) {
         if (this.#isEmpty()) return false;
         let current = this.#head;
@@ -91,6 +116,10 @@ class LinkedList {
         return false;
     }
 
+    /**
+     * Returns the index of the specified value, or `null` if it's not in the list.
+     * @param {any} value The value we're searching for
+     */
     find(value) {
         if (this.#isEmpty()) return null;
         let current = this.#head;
@@ -103,6 +132,7 @@ class LinkedList {
         return null;
     }
 
+    /** Returns a string that contains every item on the list */
     toString() {
         if (this.#isEmpty()) return "null";
         let string = "";
@@ -114,8 +144,13 @@ class LinkedList {
         return string + "null";
     }
 
+    /**
+     * Inserts the specified value at the index, and shifts the elements around it to accomodate it.
+     * @param {any} value The value to insert into the list
+     * @param {number} index The index to insert the value at
+     */
     insertAt(value, index) {
-        this.#indexHandler(index, false);
+        if (index !== this.#size) this.#indexHandler(index);
         this.#size++;
         const newNode = new _Node(value);
         let oldNode = this.#nodeAt(index);
@@ -125,6 +160,10 @@ class LinkedList {
         oldNode.prevNode = newNode;
     }
 
+    /**
+     * Removes the item at the specified index and shifts the elements around it
+     * @param {number} index The index whose item we'd like to remove
+     */
     removeAt(index) {
         this.#indexHandler(index);
         this.#size--;
@@ -132,16 +171,29 @@ class LinkedList {
         node.prevNode.nextNode = node.nextNode;
     }
 
+    /**
+     * Replaces the item at the specified index with the provided value
+     * @param {any} value The new value of the item
+     * @param {number} index The index we're replacing
+     */
     replaceAt(value, index) {
         this.#indexHandler(index);
         const node = this.#nodeAt(index);
         node.value = value;
     }
 
+    // PRIVATE METHODS
+
+    /** Returns `true` if the list is empty, otherwise returns `false` */
     #isEmpty() {
         return this.#size === 0;
     }
 
+    /**
+     * Returns the actual node element at the specified index
+     * @param {number} index The index to retrieve
+     * @returns {_Node | null}
+     */
     #nodeAt(index) {
         this.#indexHandler(index);
         let current = this.#head;
@@ -151,11 +203,15 @@ class LinkedList {
         return current;
     }
 
-    #indexHandler(index, includeTail = true) {
+    /**
+     * Throws an error if the provided index cannot be accessed
+     * @param {number} index The index to check
+     */
+    #indexHandler(index) {
         if (typeof index !== "number" || index !== Math.floor(index))
             throw new TypeError(`Index must be a whole number`);
         if (index < 0) throw new RangeError(`Index must be 0 or higher!`);
-        if (index >= this.#size || (includeTail && index > this.#size))
+        if (index >= this.#size)
             throw new RangeError(`Index "${index}" does not exist!`);
     }
 }

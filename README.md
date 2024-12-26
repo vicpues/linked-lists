@@ -2,11 +2,12 @@
 
 A basic implementation of a doubly linked list for The Odin Project's [fullstack javascript course](https://www.theodinproject.com/lessons/javascript-linked-lists).
 
-Supports the following methods & accessors:
+The implementation is an ES6 class {LinkedList} which supports the following methods:
 
 -   `.size` - Read-only property that contains the size of the list.
 -   `.head` - Read-only property that returns the first item of the list.
 -   `.tail` - Read-only property that returns the last item of the list.
+-   `LinkedList.from(array)` - Static method that takes in an array and returns its equivalent linked list.
 -   `.append(value)` - Adds a \<value\> at the end of the list.
 -   `.prepend(value)` - Adds a \<value\> at the beginning of the list.
 -   `.at(index)` - Returns the value at the specified \<index\>.
@@ -17,4 +18,3 @@ Supports the following methods & accessors:
 -   `.toString()` - Returns a string with the values of every item in the list.
 -   `.insertAt(value, index)` - Inserts the specified \<value\> into the list at the provided \<index\>.
 -   `.removeAt(index)` - Removes the item at the specified \<index\>
--   `LinkedList.from(array)` - Static method that takes in an array and returns its equivalent linked list.

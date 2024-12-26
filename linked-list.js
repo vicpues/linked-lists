@@ -104,7 +104,7 @@ class LinkedList {
         if (this.#size === 0) return "null";
         let string = "";
         let current = this.#head;
-        while (current.nextNode !== null) {
+        while (current !== null) {
             string += `( ${current.value} ) -> `;
             current = current.nextNode;
         }

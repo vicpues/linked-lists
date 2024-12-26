@@ -63,6 +63,8 @@ class LinkedList {
     }
 
     #indexHandler(index, includeTail = true) {
+        if (typeof index !== "number" || index !== Math.floor(index))
+            throw new TypeError(`Index must be a whole number`);
         if (index < 0) throw new RangeError(`Index must be 0 or higher!`);
         if (index >= this.#size || (includeTail && index > this.#size))
             throw new RangeError(`Index "${index}" does not exist!`);
@@ -114,10 +116,11 @@ class LinkedList {
     insertAt(value, index) {
         this.#indexHandler(index, false);
         this.#size++;
-        const newNode = new Node(value);
+        const newNode = new _Node(value);
         let oldNode = this.#nodeAt(index);
         newNode.prevNode = oldNode.prevNode;
         newNode.nextNode = oldNode;
+        oldNode.prevNode.nextNode = newNode;
         oldNode.prevNode = newNode;
     }
 
@@ -125,7 +128,7 @@ class LinkedList {
         this.#indexHandler(index);
         this.#size--;
         let node = this.#nodeAt(index);
-        node.prevNode = node.nextNode;
+        node.prevNode.nextNode = node.nextNode;
     }
 }
 

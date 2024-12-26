@@ -34,3 +34,8 @@ console.log(list.toString()); // ( cow ) -> ( dog ) -> ( cat ) -> ( parrot ) -> 
 
 console.log(list.shift()); // cow
 console.log(list.toString()); // ( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> null
+
+console.log(list.contains("parrot")); // true
+console.log(list.contains("dragon")); // false
+
+console.log(list.find("parrot")); // 2

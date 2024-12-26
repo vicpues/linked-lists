@@ -11,6 +11,14 @@ class LinkedList {
     #tail = null;
     #size = 0;
 
+    static from(array) {
+        const list = new LinkedList();
+        for (let value of array) {
+            list.append(value);
+        }
+        return list;
+    }
+
     append(value) {
         const newNode = new _Node(value);
         this.#size++;

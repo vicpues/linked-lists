@@ -39,3 +39,6 @@ console.log(list.contains("parrot")); // true
 console.log(list.contains("dragon")); // false
 
 console.log(list.find("parrot")); // 2
+
+const pokemon = LinkedList.from(["vulbasaur", "squirtle", "charmander"]);
+console.log(pokemon.toString());

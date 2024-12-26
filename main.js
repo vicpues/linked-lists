@@ -45,3 +45,6 @@ console.log(pokemon.toString()); // ( vulbasaur ) -> ( squirtle ) -> ( charmande
 
 pokemon.replaceAt("charizard!!", 2);
 console.log(pokemon.toString()); // ( vulbasaur ) -> ( squirtle ) -> ( charizard!! ) -> null
+
+pokemon.append("treecko").append("mudkip").append("torchic");
+console.log(pokemon.toString()); // ( vulbasaur ) -> ( squirtle ) -> ( charizard!! ) -> ( treecko ) -> ( mudkip ) -> ( torchic ) -> null

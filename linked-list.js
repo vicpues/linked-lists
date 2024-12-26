@@ -39,7 +39,7 @@ class LinkedList {
     }
 
     /**
-     * Adds a value at the end of the list
+     * Adds a value at the end of the list. May be chained
      * @param {any} value Value to append to the end of the list
      */
     append(value) {
@@ -53,10 +53,11 @@ class LinkedList {
             this.#tail.nextNode = newNode;
             this.#tail = newNode;
         }
+        return this;
     }
 
     /**
-     * Adds a value at the beginning of the list
+     * Adds a value at the beginning of the list. May be chained
      * @param {any} value Value to be added at the beginning of the list
      */
     prepend(value) {
@@ -70,6 +71,7 @@ class LinkedList {
             this.#head.prevNode = newNode;
             this.#head = newNode;
         }
+        return this;
     }
 
     /**
@@ -145,7 +147,7 @@ class LinkedList {
     }
 
     /**
-     * Inserts the specified value at the index, and shifts the elements around it to accomodate it.
+     * Inserts the specified value at the index, and shifts the elements around it to accomodate it. May be chained
      * @param {any} value The value to insert into the list
      * @param {number} index The index to insert the value at
      */
@@ -158,10 +160,11 @@ class LinkedList {
         newNode.nextNode = oldNode;
         oldNode.prevNode.nextNode = newNode;
         oldNode.prevNode = newNode;
+        return this;
     }
 
     /**
-     * Removes the item at the specified index and shifts the elements around it
+     * Removes the item at the specified index and shifts the elements around it. May be chained
      * @param {number} index The index whose item we'd like to remove
      */
     removeAt(index) {
@@ -169,10 +172,11 @@ class LinkedList {
         this.#size--;
         const node = this.#nodeAt(index);
         node.prevNode.nextNode = node.nextNode;
+        return this;
     }
 
     /**
-     * Replaces the item at the specified index with the provided value
+     * Replaces the item at the specified index with the provided value. May be chained
      * @param {any} value The new value of the item
      * @param {number} index The index we're replacing
      */
@@ -180,6 +184,7 @@ class LinkedList {
         this.#indexHandler(index);
         const node = this.#nodeAt(index);
         node.value = value;
+        return this;
     }
 
     // PRIVATE METHODS

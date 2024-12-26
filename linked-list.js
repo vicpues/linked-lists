@@ -74,9 +74,19 @@ class LinkedList {
         if (this.#size === 0) return null;
         this.#size--;
         const node = this.#tail;
-        const prev = this.#tail.prevNode;
-        prev.nextNode = null;
-        this.#tail = prev;
+        const newTail = this.#tail.prevNode;
+        newTail.nextNode = null;
+        this.#tail = newTail;
+        return node.value;
+    }
+
+    shift() {
+        if (this.#size === 0) return null;
+        this.#size--;
+        const node = this.#head;
+        const newHead = this.#head.nextNode;
+        newHead.prevNode = null;
+        this.#head = newHead;
         return node.value;
     }
 

@@ -11,6 +11,18 @@ class LinkedList {
     #tail = null;
     #size = 0;
 
+    get size() {
+        return this.#size;
+    }
+
+    get head() {
+        return this.#head.value;
+    }
+
+    get tail() {
+        return this.#tail.value;
+    }
+
     static from(array) {
         const list = new LinkedList();
         for (let value of array) {
@@ -43,18 +55,6 @@ class LinkedList {
             this.#head.prevNode = newNode;
             this.#head = newNode;
         }
-    }
-
-    get size() {
-        return this.#size;
-    }
-
-    get head() {
-        return this.#head.value;
-    }
-
-    get tail() {
-        return this.#tail.value;
     }
 
     at(index) {

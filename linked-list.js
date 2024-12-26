@@ -42,11 +42,11 @@ class LinkedList {
     }
 
     get head() {
-        return this.#head;
+        return this.#head.value;
     }
 
     get tail() {
-        return this.#tail;
+        return this.#tail.value;
     }
 
     at(index) {
